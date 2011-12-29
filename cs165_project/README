@@ -1,0 +1,50 @@
+/* Author: Ryan Kwong
+*  Student ID: 860-88-9552
+*  Please read "Bugs/Errors" section at the end.
+*/
+
+Make:
+	- server/
+		type 'make'
+
+	- client/
+		type 'make'
+
+Testing:
+	Open 4 terminals.
+
+	*Change port number if it cannot be bound*
+
+	Terminal 1 -
+		In server/:
+			./server -port 4433 store
+
+	Terminal 2 -
+		In server/:
+			./server -port 4444 retrieve
+
+	Terminal 3 -
+		In client/:
+			echo "This is a test file" > test.txt
+
+	Terminal 3 -
+		In client/:
+			./client -server localhost -port 4433 test.txt -operation store
+
+	Terminal 4 -
+		In client/:
+			./client -server localhost -port 4444 test.txt -operation retrieve
+
+Bugs/Errors:
+	1)  When a client tries to connect, it may "hang" and "freeze". It will not continue to decrypt and process anything.
+
+		Solution: Ctrl + c, please run it again.
+
+	2)  Server may not decrypt the RSA challenge sent by the client side everytime even when it should.
+
+		Solution: Breaks are used to acknowledge server challenge regardless of comparison between
+		SHA1 hashes.
+
+	3) Can only decrypt file size of ~60 bytes
+
+	   Solution: None found

@@ -1,0 +1,12 @@
+Owner: Ryan Kwong
+UCR CS165 - Computer Security
+
+Contains two projects.
+
+1) Assignment 1
+	- Vernam Cipher
+	- Huffman Encoding
+
+2) OpenSSL Client/Server Implementation
+	- C++
+	- Not fully functional
